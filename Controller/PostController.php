@@ -85,7 +85,8 @@ class PostController extends Controller
             'user'       => $user,
             'post'       => $post,
             'form'       => $form,
-            'archives'   => $this->getArchiveDatas($blog)
+            'archives'   => $this->getArchiveDatas($blog),
+        	'workspace'	 => $blog->getResourceNode()->getWorkspace() 
         );
     }
     /**
@@ -194,7 +195,8 @@ class PostController extends Controller
             'user'       => $user,
             'post'       => $post,
             'form'       => $form->createView(),
-            'archives'   => $this->getArchiveDatas($blog)
+            'archives'   => $this->getArchiveDatas($blog),
+        	'workspace'	 => $blog->getResourceNode()->getWorkspace() 
         );
     }
 

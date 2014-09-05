@@ -104,7 +104,8 @@ class BlogController extends Controller
             'archives'   => $this->getArchiveDatas($blog),
             'tag'        => $tag,
             'author'     => $author,
-            'date'       => $date
+            'date'       => $date,
+        	'workspace'	 => $blog->getResourceNode()->getWorkspace() 
         );
     }
 
@@ -157,7 +158,8 @@ class BlogController extends Controller
             'user'       => $user,
             'pager'      => $pager,
             'search'     => $search,
-            'archives'   => $this->getArchiveDatas($blog)
+            'archives'   => $this->getArchiveDatas($blog),
+        	'workspace'	 => $blog->getResourceNode()->getWorkspace() 
         );
     }
 
@@ -207,7 +209,8 @@ class BlogController extends Controller
             'bannerForm' => $this->getBannerForm($blog->getOptions()),
             'form'       => $form->createView(),
             'archives'   => $this->getArchiveDatas($blog),
-            'user'       => $user
+            'user'       => $user,
+        	'workspace'	 => $blog->getResourceNode()->getWorkspace() 
         );
     }
 
@@ -291,7 +294,8 @@ class BlogController extends Controller
             '_resource'  => $blog,
             'bannerForm' => $this->getBannerForm($blog->getOptions()),
             'form'       => $form->createView(),
-            'archives'   => $this->getArchiveDatas($blog)
+            'archives'   => $this->getArchiveDatas($blog),
+        	'workspace'	 => $blog->getResourceNode()->getWorkspace() 
         );
     }
 
@@ -304,8 +308,8 @@ class BlogController extends Controller
         $feed = array(
             'title'       => $blog->getName(),
             'description' => $blog->getInfos(),
-            'siteUrl'     => $this->generateUrl('icap_blog_view', array('blogId' => $blog->getId())),
-            'feedUrl'     => $this->generateUrl('icap_blog_rss', array('blogId' => $blog->getId())),
+            'siteURL'     => $this->generateUrl('icap_blog_view', array('blogId' => $blog->getId())),
+            'feedURL'     => $this->generateUrl('icap_blog_rss', array('blogId' => $blog->getId())),
             'lang'        => $this->get("claroline.config.platform_config_handler")->getParameter('locale_language')
         );
 
