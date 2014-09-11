@@ -1,0 +1,56 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11 sept. 2014, 16:56:18
+    Author     : root
+*/
+
+
+.slrn-blog-aside .panel {
+    margin-bottom: 0;
+}
+
+.slrn-blog-aside .panel-heading {
+    
+    padding:            .66em;
+    border-radius:      0;
+    
+    background-color:   #4B667C;
+    color:              #EEEEEF;
+}
+
+.slrn-blog-aside .panel-title {
+    font-size:      1.1em;
+    margin:         0;
+    font-weight:    bold;
+}
+
+.slrn-blog-aside .panel-body {
+    background-color:   #EEEEEF;
+    color:              #333;
+    padding:            1em .66em;
+    overflow:           hidden;
+}
+
+.slrn-blog-aside .panel-body *:last-child {
+    margin-bottom: 0;
+}
+
+.slrn-rss-icon {
+    display:        inline-block;
+    height:         34px;
+    line-height:    34px; 
+}
+
+.slrn-rss-icon:before {
+    content:        "";
+    float:          right;
+    margin-left:    1em;
+    width:          34px;
+    height:         34px;
+    background:     transparent url('../../clarolinecore/images/sprites_solerni.png') no-repeat -211px -264px scroll;
+    
+}
