@@ -103,20 +103,13 @@
                     <h3 class="panel-title">{{ 'archives'|trans({}, 'icap_blog') }}</h3>
                 </div>
                 <div class="panel-body">
-                    <ul class="tree">
-                        {% for year, datas in archives %}
-                        <li>
-                            <span>{{ year }}</span>
-                            <ul>
-                            {% for data in datas %}
-                                <li><a href="{{ path('icap_blog_view_filter', {'blogId': _resource.id, 'filter': data.urlParameters}) }}">{{ data.month }} ({{ data.count }})</a></li>
-                            {% endfor %}
-                            </ul>
-                        </li>
-                        {% else %}
-                        <li>{{ 'no_archives'|trans({}, 'icap_blog') }}</li>
+                    {% for year, datas in archives %}
+                    {% for data in datas %}
+                            <a class="pink_link slrn-blog-archives-link" href="{{ path('icap_blog_view_filter', {'blogId': _resource.id, 'filter': data.urlParameters}) }}">{{ data.month }} {{ year }}</a>
                         {% endfor %}
-                    </ul>
+                    {% else %}
+                        {{ 'no_archives'|trans({}, 'icap_blog') }}
+                    {% endfor %}
                 </div>
             </div>
         </aside>
@@ -154,6 +147,7 @@
 
                 {% if blogOptions.displayTitle %}
                 <h1 class="slrn-panel-title">{{ _resource.resourceNode.name }}</h1>
+                <hr>
                 {% endif %}
 
                 {% if is_granted('EDIT', _resource) %}
@@ -243,8 +237,11 @@
                 {% endif %}
 
                 {% if blogOptions.isBannerActivate or (false == blogOptions.isBannerActivate and is_granted('EDIT', _resource)) %}
-                <div id="blog_banner" class="col-md-12 well blog_banner{% if false == blogOptions.isBannerActivate %} hidden{% endif %}" style="height: {{ blogOptions.bannerHeight }}px; background-color: {{ blogOptions.bannerBackgroundColor }}; background-image: {% if null == blogOptions.bannerBackgroundImageWebPath %}none{% else %}url('{{ asset(blogOptions.bannerBackgroundImageWebPath) }}'){% endif %}; background-position: {{ blogOptions.bannerBackgroundImagePosition }}; background-repeat: {{ blogOptions.bannerBackgroundImageRepeat }};">
-                </div>
+                    <div id="blog_banner slrn-blog-banner" 
+                         class="col-md-12 well blog_banner{% if false == blogOptions.isBannerActivate %} hidden{% endif %}" 
+                         style="height: {{ blogOptions.bannerHeight }}px; background-color: {{ blogOptions.bannerBackgroundColor }}; background-image: {% if null == blogOptions.bannerBackgroundImageWebPath %}none{% else %}url('{{ asset(blogOptions.bannerBackgroundImageWebPath) }}'){% endif %}; background-position: {{ blogOptions.bannerBackgroundImagePosition }}; background-repeat: {{ blogOptions.bannerBackgroundImageRepeat }};">
+                    </div>
+                    <hr>
                 {% endif %}
                 {{ macros.flashBox() }}
                 
@@ -265,7 +262,7 @@
                     </div>
                {% endif %}
                 <div class="row">
-                    <section class="col-lg-8">
+                    <section class="col-lg-12 slrn-blog-posts-list">
                         {% block blog_content %}{% endblock %}
                     </section>
                 </div>
@@ -324,15 +321,24 @@
                 $('#calendar').fullCalendar({
                     editable:        false,
                     events:          "{{ path('icap_blog_calendar_datas', {'blogId': _resource.id}) }}",
+                    header: {
+                        left: 'prev',
+                        center: 'title',
+                        right: 'next'
+                    },
+                    buttonIcons: false,    
+                    themeButtonIcons: false,
                     buttonText: {
-                        today: t('today')
+                        today: t('today'),
+                        prev: t('slrn_prev'),
+                        next: t('slrn_next')
                     },
                     monthNames: [t('january'), t('february'), t('mars'), t('april'), t('may'), t('june'), t('july'),
                         t('august'), t('september'), t('october'), t('november'), t('december')],
                     monthNamesShort: [t('jan'), t('feb'), t('mars'), t('apr'), t('may'), t('ju'), t('jul'), t('aug'),
                         t('sept'), t('nov'), t('dec')],
                     dayNames: [ t('sunday'),t('monday'), t('tuesday'), t('wednesday'), t('thursday'), t('friday'), t('saturday')],
-                    dayNamesShort: [ t('sun'), t('mon'), t('tue'), t('wed'), t('thu'), t('fri'), t('sat')],
+                    dayNamesShort: [ t('SU'), t('MO'), t('TU'), t('WE'), t('TH'), t('FR'), t('SA')],
                     today: 'pouet'
                 });
 

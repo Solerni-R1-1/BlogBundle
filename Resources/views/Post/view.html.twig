@@ -5,12 +5,18 @@
 {% block title %}{{ _resource.resourceNode.name }}{% endblock %}
 
 {% block blog_content %}
+    {# back to articles #}
+    <a class="back_link" href="{{ path('icap_blog_view', {'blogId': _resource.id}) }}">
+        <i class="icon-chevron-left no_underline"></i>
+        {{ 'slrn_back_articles'|trans({}, 'icap_blog') }}
+    </a>
+
     {% set isPublished = post.isPublished %}
-    <article{% if not isPublished %} class="unpublished"{% endif %}>
+    <article class="slrn-blog-post{% if not isPublished %} unpublished{% endif %}">
 
         {% include 'IcapBlogBundle:Post:postHeader.html.twig' with {'mode': 'post_view'} %}
 
-        <div class="content">{{ post.content|raw }}</div>
+        <div class="blog-content slrn-blog-post-content">{{ post.content|raw }}</div>
 
         {% include 'IcapBlogBundle:Post:postFooter.html.twig' with {'mode': 'post_view'} %}
     </article>
