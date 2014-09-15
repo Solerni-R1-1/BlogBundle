@@ -286,3 +286,29 @@ li.slrn-list-with-border .panel-footer {
     color:          #FF004F;
     font-weight:    inherit;
 }
+
+.slrn-blog-posts-list .icon-user {
+    display:    inline-block;
+    width:      15px;
+    height:     15px;
+    background: transparent url(../../clarolinecore/images/sprites_solerni.png) no-repeat -232px -585px scroll;
+    position:   relative;
+    top:        -2px;
+}
+
+.slrn-blog-posts-list .icon-user:before {
+    visibility: hidden;
+}
+
+.slrn-blog-posts-list .icon-comments {
+    display:    inline-block;
+    width:      16px;
+    height:     15px;
+    background: transparent url(../../clarolinecore/images/sprites_solerni.png) no-repeat -189px -585px scroll;
+    position:   relative;
+    top:        -1px;
+}
+
+.slrn-blog-posts-list .icon-comments:before {
+    visibility: hidden;
+}
