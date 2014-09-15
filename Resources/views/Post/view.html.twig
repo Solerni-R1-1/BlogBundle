@@ -28,10 +28,11 @@
         {% for comment in postComments %}
             {% set isPublished = comment.isPublished %}
             {% if is_granted('EDIT', _resource) or isPublished %}
-            <li>
+            <li class="slrn-list-with-border">
                 <div class="panel {% if isPublished == false %}panel-warning{% else %}panel-default{% endif %}">
+                    {% if is_granted('EDIT', _resource) %}
+                    {# admin tools #}
                     <div class="panel-heading">
-                        {% if is_granted('EDIT', _resource) %}
                         <div class="btn-group pull-right options">
                             {% if isPublished %}
                             <a href="{{ path('icap_blog_comment_unpublish', {'blogId': _resource.id, 'postSlug': post.slug, 'commentId': comment.id}) }}" class="btn btn-default btn-red btn-xs">
@@ -46,18 +47,33 @@
                                 <i class="icon-trash"></i>
                             </a>
                         </div>
-                        {% endif %}
-
-                        <ul class="list-inline">
-                            {% set authorPicture = comment.author.picture %}
-                            {% set author = (null == comment.author) ? 'anonymous'|trans({}, 'platform') : comment.author.firstname ~ ' ' ~ comment.author.lastname %}
-                            <li>{% if authorPicture is null %}<span class="icon-user"></span>{% else %}<img src="{{ asset('uploads/pictures/') ~ authorPicture }}" alt="{{ author }}" class="img-rounded user_picture">{% endif %}&nbsp;{% if null == comment.author %}{{ author }}{% else %}<a href="{{ path('claro_profile_view', {'userId': comment.author.id}) }}" title="{{ author }}">{{ author }}</a>{% endif %}</li>
-                            {% if isPublished %}<li><span class="icon-calendar"></span>  {{ comment.publicationDate|date('date_format'|trans({}, 'platform')) }}</li>{% endif %}
-                            <a name="comment-{{ comment.id }}"></a>
-                        </ul>
                     </div>
+                        {% endif %}
                     <div class="panel-body">
                         {{ comment.message|raw }}
+                    </div>
+                    <div class="panel-footer">
+                        <ul class="list-inline post_infos">
+                            {% set authorPicture = comment.author.picture %}
+                            <li>
+                                {% if authorPicture is null %}
+                                    <span class="icon-user"></span>
+                                {% else %}
+                                    <img src="{{ image( 'uploads/pictures/' ~ authorPicture ).zoomCrop(30,30) }}" alt="{{ comment.author.firstname ~ ' ' ~ comment.author.lastname }}" class="user_picture">
+                                {% endif %}
+                                <a class="slrn-author-link" href="{{ path('icap_blog_view_filter', {'blogId': _resource.id, 'filter': comment.author.username}) }}" rel="author" title="{{ comment.author.firstname ~ ' ' ~ comment.author.lastname }}">{{ comment.author.firstname ~ ' ' ~ comment.author.lastname }}</a>
+                                {% if null != comment.publicationDate %}
+                                    {% if comment.publicationDate|date('d-m-Y') == "now"|date('d-m-Y') %}
+                                        {{ 'today'|trans({}, 'icap_blog' )}}
+                                    {% else %}
+                                        {{ 'on'|trans({}, 'icap_blog' )}}
+                                        <time>{{ comment.publicationDate|date('date_format'|trans({}, 'platform')) }}</time>
+                                    {% endif %}
+                                    {{ 'at'|trans({}, 'icap_blog' )}}
+                                    <time>{{ comment.publicationDate|date('G:i'|trans({}, 'platform')) }}</time>
+                                {% endif %}
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </li>
@@ -66,23 +82,22 @@
         </ul>
         {% if _resource.isCommentsAuthorized %}
             {% if false == is_granted('IS_AUTHENTICATED_FULLY') and false == _resource.isAuthorizeAnonymousComment %}
-                <p class="alert alert-warning">
+                <p class="slrn-grey-block slrn-info-block">
                     {{ 'icap_blog_post_comment_need_authentication'|trans({'%connection_url%': path('claro_security_login')}, 'icap_blog')|raw }}
                 </p>
             {% else %}
                 {% set countComments = is_granted('EDIT', _resource) ? post.countComments(true) : post.countComments %}
-                {% if countComments > 0 %}{{ 'add_comment'|trans }}{% else %}{{ 'be_the_first_to_comment'|trans }}{% endif %} :
-                <form action="{{ path('icap_blog_post_view', {'blogId': _resource.id, 'postSlug': post.slug}) }}" class="well" method="post" {{ form_enctype(form) }}>
+                <form action="{{ path('icap_blog_post_view', {'blogId': _resource.id, 'postSlug': post.slug}) }}" class="slrn-list-with-border slrn-comment-form" method="post" {{ form_enctype(form) }}>
                     {% if false ==_resource.isAutoPublishComment %}
-                    <p class="alert alert-warning">
+                    <p class="slrn-grey-block slrn-info-block">
                         {{ 'icap_blog_post_comment_need_validation_before_publishing'|trans({}, 'icap_blog') }}
                     </p>
                     {% endif %}
                     {{ form_errors(form) }}
                     {{ form_widget(form.message) }}
                     {{ form_rest(form) }}
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">{{ 'to_comment'|trans }}</button>
+                    <div class="form-actions slrn-form-actions">
+                        <button type="submit" class="btn btn-primary pull-right">{{ 'i_comment'|trans }}</button>
                     </div>
                 </form>
             {% endif %}

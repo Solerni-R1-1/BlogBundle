@@ -169,7 +169,7 @@ and open the template in the editor.
     font-size:      24px;
 }
 
-.slrn-blog-post-header .icon-user {
+.slrn-content-blog .icon-user {
     color: #999;
 }
 
@@ -214,4 +214,75 @@ and open the template in the editor.
     position:   relative;
     top:        -1em;
     color:      #333;
+}
+
+.slrn-list-with-border {
+    border-top:     2px solid #EEEEEF;
+    padding:        20px 0 20px 80px;
+}
+
+.slrn-list-with-border .panel {
+    margin-bottom: 0;
+}
+
+li.slrn-list-with-border .panel-body {
+    padding: 0 10px;
+}
+
+.slrn-blog-post .list-inline > li {
+    padding-left: 0;
+}
+
+li.slrn-list-with-border .panel-footer .list-inline > li {
+    padding-left: 10px;
+}
+
+li.slrn-list-with-border .panel-footer {
+    margin-top: 10px;
+}
+
+.slrn-grey-block {
+    background-color: #EEEEEF;
+    padding: 1em;
+    margin: 0 0 1em 0;
+}
+
+.slrn-info-block {
+    padding-left:   4.2em;
+    position:       relative;
+    min-height:     5em;
+    font-size:      1.3em;
+    color:          #4C667D;
+    line-height:    1.4;
+}
+
+.slrn-info-block:before {
+    content:        "";
+    background:     transparent url(../../clarolinecore/images/sprites_solerni.png) no-repeat 0 -657px scroll;
+    width:          31px;
+    height:         66px;
+    position:       absolute;
+    left:           1em;
+}
+
+.slrn-comment-form {
+    padding-top: 4em;
+}
+
+.slrn-comment-form  .slrn-form-actions {
+    padding: 1.5em 0 0 0;
+}
+
+.slrn-blog-filtered {
+    color:          #333;
+    font-size:      24px;
+    margin-bottom:  40px;
+    padding-bottom: 10px;
+    border-bottom:  2px solid #EEEEEF;
+    font-weight:    bold;
+}
+
+.slrn-blog-filtered strong {
+    color:          #FF004F;
+    font-weight:    inherit;
 }
