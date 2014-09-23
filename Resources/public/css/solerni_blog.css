@@ -1,0 +1,314 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11 sept. 2014, 16:56:18
+    Author     : root
+*/
+
+
+.slrn-blog-aside .panel {
+    margin-bottom: 0;
+}
+
+.slrn-blog-aside .panel-heading {
+    
+    padding:            .66em;
+    border-radius:      0;
+    
+    background-color:   #4B667C;
+    color:              #EEEEEF;
+}
+
+.slrn-blog-aside .panel-title {
+    font-size:      1.1em;
+    margin:         0;
+    font-weight:    bold;
+}
+
+.slrn-blog-aside .panel-body {
+    background-color:   #EEEEEF;
+    color:              #333;
+    padding:            1em .66em;
+    overflow:           hidden;
+}
+
+.slrn-blog-aside .panel-body > *:last-child {
+    margin-bottom: 0;
+}
+
+.slrn-rss-icon {
+    display:        inline-block;
+    height:         34px;
+    line-height:    34px; 
+}
+
+.slrn-rss-icon:before {
+    content:        "";
+    float:          right;
+    margin-left:    1em;
+    width:          34px;
+    height:         34px;
+    background:     transparent url('../../clarolinecore/images/sprites_solerni.png') no-repeat -211px -264px scroll;
+    
+}
+
+/* CALENDAR */
+
+.slrn-blog-aside .fc-header {
+    font-weight:    bold;
+    margin-bottom:  5px;
+    color:          #333;
+}
+
+.slrn-blog-aside .calendar .fc-header-title h2 {
+    font-size:      12px;
+    text-transform: uppercase;
+    margin:         0;
+    line-height:    28px;
+    font-weight:    bold;
+}
+
+.slrn-blog-aside .fc-state-default,
+.slrn-blog-aside .fc-state-default .fc-button-inner {
+    border:     0;
+    background: transparent;
+    color:      #333;
+}
+
+.slrn-blog-aside .fc-state-default:hover .fc-button-content {
+    color: #4B667C;
+}
+
+.slrn-blog-aside .fc-grid th, 
+.slrn-blog-aside .fc-grid td {
+    border:     0;
+    text-align: center;
+    width:      25px;
+    height:     25px;
+}
+
+.slrn-blog-aside .fc-grid th {
+    color: #333;
+}
+
+.slrn-blog-aside .fc-day-number {
+    color:          #606060;
+    font-weight:    bold;
+    position:       absolute;
+    width:          27px;
+    height:         25px;
+    line-height:    25px;
+    padding:        0;
+}
+
+.slrn-blog-aside .fc-event-skin {
+    background: transparent;
+    border:     0;
+    color:      transparent;
+    width:      26px;
+    height:     25px;
+}
+
+.slrn-blog-aside .fc-event-inner {
+    border:     1px solid #4B667C;
+}
+
+.slrn-blog-aside .fc-state-highlight {
+    background-color: #4B667C;
+}
+
+.slrn-blog-aside .fc-state-highlight .fc-day-number {
+    color: #EEEEEF;
+}
+
+.slrn-blog-aside .fc-day-content {
+    padding:    0;
+    width:      25px;
+    height:     25px;
+}
+
+.slrn-blog-aside .fc-button {
+    margin: 0;
+}
+
+.slrn-blog-archives-link {
+    display: block;
+}
+
+/* POSTS */
+
+.slrn-blog-posts-list {
+    padding-top: 50px;
+}
+
+.slrn-blog-post {
+    border:         0;
+    margin-bottom:  50px;
+}
+
+.slrn-blog-post.unpublished {
+    background: transparent;
+}
+
+.slrn-blog-post-header {
+    background: transparent;
+    border:     0;
+    padding:    0;
+}
+
+.slrn-blog-post-title {
+    margin-bottom: 2px;
+}
+
+.slrn-blog-post-title-link {
+    color:          #333;
+    font-weight:    bold;
+    font-size:      24px;
+}
+
+.slrn-content-blog .icon-user {
+    color: #999;
+}
+
+.post_infos {
+    font-size:  14px;
+    color:      #606060;
+}
+
+.slrn-author-link {
+    font-weight: bold;
+}
+
+.slrn-blog-post-content .icon-long-arrow-right {
+    display: none;
+}
+
+.slrn-blog-post-content {
+    margin: 15px 0;
+}
+
+.slrn-blog-post-footer {
+    background:     transparent;
+    border:         0;
+    padding:        0;
+}
+
+.slrn-blog-post-footer .icon-tags {
+    color: #999;
+}
+
+.slrn-blog-post-footer .icon-comments {
+    color:          #999;
+    margin-right:   8px;
+}
+
+.no_underline {
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.slrn-blog-posts-list .back_link {
+    position:   relative;
+    top:        -1em;
+    color:      #333;
+}
+
+.slrn-list-with-border {
+    border-top:     2px solid #EEEEEF;
+    padding:        20px 0 20px 80px;
+}
+
+.slrn-list-with-border .panel {
+    margin-bottom: 0;
+}
+
+li.slrn-list-with-border .panel-body {
+    padding: 0 10px;
+}
+
+.slrn-blog-post .list-inline > li {
+    padding-left: 0;
+}
+
+li.slrn-list-with-border .panel-footer .list-inline > li {
+    padding-left: 10px;
+}
+
+li.slrn-list-with-border .panel-footer {
+    margin-top: 10px;
+}
+
+.slrn-grey-block {
+    background-color: #EEEEEF;
+    padding: 1em;
+    margin: 0 0 1em 0;
+}
+
+.slrn-info-block {
+    padding-left:   4.2em;
+    position:       relative;
+    min-height:     5em;
+    font-size:      1.3em;
+    color:          #4C667D;
+    line-height:    1.4;
+}
+
+.slrn-info-block:before {
+    content:        "";
+    background:     transparent url(../../clarolinecore/images/sprites_solerni.png) no-repeat 0 -657px scroll;
+    width:          31px;
+    height:         66px;
+    position:       absolute;
+    left:           1em;
+}
+
+.slrn-comment-form {
+    padding-top: 4em;
+}
+
+.slrn-comment-form  .slrn-form-actions {
+    padding: 1.5em 0 0 0;
+}
+
+.slrn-blog-filtered {
+    color:          #333;
+    font-size:      24px;
+    margin-bottom:  40px;
+    padding-bottom: 10px;
+    border-bottom:  2px solid #EEEEEF;
+    font-weight:    bold;
+}
+
+.slrn-blog-filtered strong {
+    color:          #FF004F;
+    font-weight:    inherit;
+}
+
+.slrn-blog-posts-list .icon-user {
+    display:    inline-block;
+    width:      15px;
+    height:     15px;
+    background: transparent url(../../clarolinecore/images/sprites_solerni.png) no-repeat -232px -585px scroll;
+    position:   relative;
+    top:        -2px;
+}
+
+.slrn-blog-posts-list .icon-user:before {
+    visibility: hidden;
+}
+
+.slrn-blog-posts-list .icon-comments {
+    display:    inline-block;
+    width:      16px;
+    height:     15px;
+    background: transparent url(../../clarolinecore/images/sprites_solerni.png) no-repeat -189px -585px scroll;
+    position:   relative;
+    top:        -1px;
+}
+
+.slrn-blog-posts-list .icon-comments:before {
+    visibility: hidden;
+}
