@@ -275,6 +275,8 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="alternate" type="application/rss+xml" title="RSS " href="{{ path('icap_blog_rss', {'blogId': _resource.id}) }}" />
+    
     <link rel='stylesheet' type='text/css' href='{{ asset('bundles/clarolinecore/css/common/jquery-ui-bootstrap/jquery-ui-1.9.2.custom.css') }}'/>
     <link rel='stylesheet' type='text/css' href='{{ asset(calendarPath ~ 'css/fullcalendar.css') }}'/>
     <link rel='stylesheet' type='text/css' href='{{ asset(calendarPath ~ 'css/fullcalendar.print.css') }}' media='print' />
