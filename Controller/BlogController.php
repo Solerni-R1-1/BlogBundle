@@ -305,11 +305,11 @@ class BlogController extends Controller
      */
     public function rssAction(Blog $blog)
     {
-    	$flags = ENT_COMPAT;
-    	$encoding = "utf-8";
+    	$flags = ENT_QUOTES;
+    	$encoding = "UTF-8";
         $feed = array(
-            'title'       => utf8_encode(htmlentities($blog->getName(), $flags, $encoding)),
-            'description' => utf8_encode(htmlentities($blog->getInfos(), $flags, $encoding)),
+            'title'       => html_entity_decode(strip_tags($blog->getResourceNode()->getName()), $flags, $encoding),
+            'description' => html_entity_decode(strip_tags($blog->getInfos()), $flags, $encoding),
             'siteURL'     => $this->generateUrl('icap_blog_view', array('blogId' => $blog->getId())),
             'feedURL'     => $this->generateUrl('icap_blog_rss', array('blogId' => $blog->getId())),
             'lang'        => $this->get("claroline.config.platform_config_handler")->getParameter('locale_language')
@@ -321,11 +321,11 @@ class BlogController extends Controller
         $items = array();
         foreach ($posts as $post) {
             $items[] = array(
-                'title'  => utf8_encode(htmlentities($post->getTitle(), $flags, $encoding)),
+                'title'  => strip_tags($post->getTitle()),
                 'url'    => $this->generateUrl('icap_blog_post_view', array('blogId' => $blog->getId(), 'postSlug' => $post->getSlug())),
                 'date'   => $post->getPublicationDate()->format("d/m/Y h:i:s"),
-                'intro'  => utf8_encode($post->getContent()),
-                'author' => utf8_encode(htmlentities($post->getAuthor()->getFirstName() - $post->getAuthor()->getLastName(), $flags, $encoding))
+                'intro'  => html_entity_decode(strip_tags($post->getContent()), $flags, $encoding),
+                'author' => html_entity_decode(strip_tags($post->getAuthor()->getFirstName() - $post->getAuthor()->getLastName()), $flags, $encoding)
             );
         }
         
