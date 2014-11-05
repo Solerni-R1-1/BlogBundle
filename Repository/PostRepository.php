@@ -25,6 +25,7 @@ class PostRepository extends EntityRepository
                 FROM IcapBlogBundle:Post p
                 JOIN p.author a
                 WHERE p.blog = :blogId
+            		AND p.status = 1
             ')
             ->setParameter('blogId', $blog->getId())
         ;
