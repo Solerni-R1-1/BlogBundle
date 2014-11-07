@@ -84,8 +84,8 @@ class BlogController extends Controller
         );
 
         $query = $postRepository->createCriteriaQueryBuilder($criterias, $query);
-
-        $adapter = new DoctrineORMAdapter($query);
+        
+        $adapter = new DoctrineORMAdapter($query, false);
         $pager   = new PagerFanta($adapter);
 
         $pager->setMaxPerPage($blog->getOptions()->getPostPerPage());
@@ -105,7 +105,7 @@ class BlogController extends Controller
             'tag'        => $tag,
             'author'     => $author,
             'date'       => $date,
-        	'workspace'	 => $blog->getResourceNode()->getWorkspace() 
+        	'workspace'	 => $blog->getResourceNode()->getWorkspace()
         );
     }
 
@@ -189,7 +189,6 @@ class BlogController extends Controller
                     $unitOfWork = $entityManager->getUnitOfWork();
                     $unitOfWork->computeChangeSets();
                     $changeSet = $unitOfWork->getEntityChangeSet($blogOptions);
-
                     $entityManager->persist($blogOptions);
                     $entityManager->flush();
 
@@ -210,7 +209,7 @@ class BlogController extends Controller
             'form'       => $form->createView(),
             'archives'   => $this->getArchiveDatas($blog),
             'user'       => $user,
-        	'workspace'	 => $blog->getResourceNode()->getWorkspace() 
+        	'workspace'	 => $blog->getResourceNode()->getWorkspace()
         );
     }
 
@@ -305,11 +304,9 @@ class BlogController extends Controller
      */
     public function rssAction(Blog $blog)
     {
-    	$flags = ENT_QUOTES;
-    	$encoding = "UTF-8";
         $feed = array(
-            'title'       => html_entity_decode(strip_tags($blog->getResourceNode()->getName()), $flags, $encoding),
-            'description' => html_entity_decode(strip_tags($blog->getInfos()), $flags, $encoding),
+            'title'       => $blog->getName(),
+            'description' => $blog->getInfos(),
             'siteURL'     => $this->generateUrl('icap_blog_view', array('blogId' => $blog->getId())),
             'feedURL'     => $this->generateUrl('icap_blog_rss', array('blogId' => $blog->getId())),
             'lang'        => $this->get("claroline.config.platform_config_handler")->getParameter('locale_language')
@@ -321,20 +318,20 @@ class BlogController extends Controller
         $items = array();
         foreach ($posts as $post) {
             $items[] = array(
-                'title'  => strip_tags($post->getTitle()),
+                'title'  => $post->getTitle(),
                 'url'    => $this->generateUrl('icap_blog_post_view', array('blogId' => $blog->getId(), 'postSlug' => $post->getSlug())),
                 'date'   => $post->getPublicationDate()->format("d/m/Y h:i:s"),
-                'intro'  => html_entity_decode(strip_tags($post->getContent()), $flags, $encoding),
-                'author' => html_entity_decode(strip_tags($post->getAuthor()->getFirstName() - $post->getAuthor()->getLastName()), $flags, $encoding)
+                'intro'  => $post->getContent(),
+                'author' => $post->getAuthor()->getFirstName() - $post->getAuthor()->getLastName()
             );
         }
-        
+
         return new Response($this->renderView("IcapBlogBundle:Blog:rss.html.twig", array(
                 'feed'  => $feed,
                 'items' => $items
             )), 200, array(
                 "Content-Type" => "application/rss+xml",
-                "charset"      => "UTF-8"
+                "charset"      => "utf-8"
             ));
     }
 

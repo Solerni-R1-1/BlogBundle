@@ -27,7 +27,7 @@ class BlogOptionsType extends AbstractType
                 'required' => false,
             ))
             ->add('post_per_page', 'choice', array(
-                'choices'       => array("5" => 5, "10" => 10, "20" => 20),
+                'choices'       => array( "3" => 3, "5" => 5, "10" => 10, "20" => 20 ),
                 'required'      => false,
                 'theme_options' => array('control_width' => 'col-md-2'),
             ))
