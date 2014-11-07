@@ -84,8 +84,8 @@ class BlogController extends Controller
         );
 
         $query = $postRepository->createCriteriaQueryBuilder($criterias, $query);
-
-        $adapter = new DoctrineORMAdapter($query);
+        
+        $adapter = new DoctrineORMAdapter($query, false);
         $pager   = new PagerFanta($adapter);
 
         $pager->setMaxPerPage($blog->getOptions()->getPostPerPage());
@@ -105,7 +105,7 @@ class BlogController extends Controller
             'tag'        => $tag,
             'author'     => $author,
             'date'       => $date,
-        	'workspace'	 => $blog->getResourceNode()->getWorkspace() 
+        	'workspace'	 => $blog->getResourceNode()->getWorkspace()
         );
     }
 
@@ -189,7 +189,6 @@ class BlogController extends Controller
                     $unitOfWork = $entityManager->getUnitOfWork();
                     $unitOfWork->computeChangeSets();
                     $changeSet = $unitOfWork->getEntityChangeSet($blogOptions);
-
                     $entityManager->persist($blogOptions);
                     $entityManager->flush();
 
@@ -210,7 +209,7 @@ class BlogController extends Controller
             'form'       => $form->createView(),
             'archives'   => $this->getArchiveDatas($blog),
             'user'       => $user,
-        	'workspace'	 => $blog->getResourceNode()->getWorkspace() 
+        	'workspace'	 => $blog->getResourceNode()->getWorkspace()
         );
     }
 
