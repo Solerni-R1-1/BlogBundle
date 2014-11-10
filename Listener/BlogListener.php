@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Icap\BlogBundle\Form\BlogType;
 use Icap\BlogBundle\Entity\Blog;
 use Icap\BlogBundle\Entity\Comment;
+use Icap\BlogBundle\Entity\Post;
 
 class BlogListener extends ContainerAware
 {
@@ -97,7 +98,7 @@ class BlogListener extends ContainerAware
         $entityManager->flush($newBlog);
 
         foreach ($blog->getPosts() as $post) {
-            /** @var \Icap\BlogBundle\Entity\Post $newPost */
+            /* @var $post Post */
             $newPost = new Post();
             $newPost
                 ->setTitle($post->getTitle())

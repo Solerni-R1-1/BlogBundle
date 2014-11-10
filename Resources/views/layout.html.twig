@@ -275,6 +275,8 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="alternate" type="application/rss+xml" title="RSS " href="{{ path('icap_blog_rss', {'blogId': _resource.id}) }}" />
+    
     <link rel='stylesheet' type='text/css' href='{{ asset('bundles/clarolinecore/css/common/jquery-ui-bootstrap/jquery-ui-1.9.2.custom.css') }}'/>
     <link rel='stylesheet' type='text/css' href='{{ asset(calendarPath ~ 'css/fullcalendar.css') }}'/>
     <link rel='stylesheet' type='text/css' href='{{ asset(calendarPath ~ 'css/fullcalendar.print.css') }}' media='print' />
@@ -309,7 +311,7 @@
         <script type='text/javascript'src='{{ asset('bundles/icapblog/js/banner.js') }}'></script>
     {% endif %}
 
-    <script type="text/javascript" src="{{ url('bazinga_exposetranslation_js', { 'domain_name': 'agenda' }) }}"></script>
+    <script type="text/javascript" src="{{ url('bazinga_exposetranslation_js', { 'domain_name': 'agenda' }, true) }}"></script>
     <script type="text/javascript">
         (function($) {
             $(function() {
@@ -332,9 +334,9 @@
                         prev: t('slrn_prev'),
                         next: t('slrn_next')
                     },
-                    monthNames: [t('january'), t('february'), t('mars'), t('april'), t('may'), t('june'), t('july'),
+                    monthNames: [t('january'), t('february'), t('march'), t('april'), t('may'), t('june'), t('july'),
                         t('august'), t('september'), t('october'), t('november'), t('december')],
-                    monthNamesShort: [t('jan'), t('feb'), t('mars'), t('apr'), t('may'), t('ju'), t('jul'), t('aug'),
+                    monthNamesShort: [t('jan'), t('feb'), t('mar'), t('apr'), t('may'), t('ju'), t('jul'), t('aug'),
                         t('sept'), t('nov'), t('dec')],
                     dayNames: [ t('sunday'),t('monday'), t('tuesday'), t('wednesday'), t('thursday'), t('friday'), t('saturday')],
                     dayNamesShort: [ t('SU'), t('MO'), t('TU'), t('WE'), t('TH'), t('FR'), t('SA')],
