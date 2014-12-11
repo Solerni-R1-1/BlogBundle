@@ -26,7 +26,7 @@ class String
             if ($pieceNumber == 1) {
                 $text        .= ' ';
                 $lenghtBefore = strlen($text);
-                $text         = substr($text, 0, strpos($text, ' ', $lenghtBefore > $nbCaracter ? $nbCaracter : $lenghtBefore));
+                $text         = substr($text, 0, strpos($text, ' ', $lenghtBefore > $nbCaracter ? $nbCaracter : ($lenghtBefore - 1)));
 
                 if ($readMoreText != '' && $lenghtBefore > $nbCaracter) {
                     $text .= $readMoreText;
