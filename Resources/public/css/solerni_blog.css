@@ -147,10 +147,11 @@ and open the template in the editor.
 .slrn-blog-post {
     border:         0;
     margin-bottom:  50px;
+    padding: .5em;
 }
 
 .slrn-blog-post.unpublished {
-    background: transparent;
+    background: #F2DEDE;
 }
 
 .slrn-blog-post-header {

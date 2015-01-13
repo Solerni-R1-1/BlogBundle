@@ -48,7 +48,7 @@ icap_blog_post_need_publishing: "Your post will need to be publish after validat
 no_tags: 'No tags#GB'
 no_authors: 'No authors#GB'
 no_archives: 'No archive#GB'
-comments: 'comment|comments#GB'
+comments: 'comment#GB|comments#GB'
 see_comments: 'See the comments#GB'
 publish: 'Publish#GB'
 unpublish: 'Unpublish (draft)#GB'
@@ -97,3 +97,4 @@ slrn_read_more: lire la suite#GB
 slrn_back_articles: Retour aux articles#GB
 today: aujourd'hui#GB
 at: à#GB
+i_comment: Je commente#GB
