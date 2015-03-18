@@ -2,6 +2,7 @@
 
 {% trans_default_domain "icap_blog" %}
 
+
 {% block blog_content %}
     {% if tag is not null %}
     <div class="slrn-blog-filtered">
@@ -31,6 +32,7 @@
             <div class="blog-content slrn-blog-post-content">{{ post.shortContent(path('icap_blog_post_view', {'blogId': _resource.id, 'postSlug': post.slug}), 'slrn_read_more'|trans)|raw }}</div>
 
             {% include 'IcapBlogBundle:Post:postFooter.html.twig' with {'mode': 'blog_view'} %}
+            
         </article>
     {% else %}
         <span>{{ 'no_post'|trans }}</span>

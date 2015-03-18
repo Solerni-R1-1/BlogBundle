@@ -1,4 +1,4 @@
-icap_blog_form_name: 'Name'
+﻿icap_blog_form_name: 'Name'
 icap_blog_post_form_title: 'Title'
 icap_blog_post_form_content: 'Content'
 icap_blog_post_form_tags: 'Tags'
@@ -20,7 +20,7 @@ icap_blog_banner_form_banner_background_color: "Background color"
 icap_blog_banner_form_banner_activate: "Activate the banner ?"
 icap_blog_banner_form_banner_background_image_position: "Positionning"
 icap_blog_banner_form_banner_background_image_repeat: "Repeat"
-icap_blog_banner_form_banner_height: "Height"
+icap_blog_banner_form_banner_height: "Heightv"
 icap_blog_banner_form_banner_background_image: "Background image"
 icap_blog_post_add_success: 'Post added with success'
 icap_blog_post_add_error: 'An error occured while adding post'
@@ -50,8 +50,8 @@ no_authors: 'No authors'
 no_archives: 'No archive'
 comments: 'comment|comments'
 see_comments: 'See the comments'
-publish: 'Make it visible'
-publish: 'Make it non visible'
+publish: 'Publish'
+unpublish: 'Unpublish (draft)'
 Post: 'Post'
 post_deletion_confirm_title: 'Deletion of a post'
 post_deletion_confirm_message: 'Are you sure you want to delete the post <strong>%postName%</strong> ?'
@@ -87,3 +87,14 @@ archives: "Archives"
 blog_rss_feed: "RSS feed of the blog"
 rss_feed: "RSS feed"
 read_more: "View more"
+slrn_news: News
+slrn_edit_blog_info: Edit the information block
+slrn_blog_rss_feed: RSS stream
+slrn_follow_us: Follow us
+on: on
+slrn_read_more: Read more
+slrn_back_articles: Return to articles
+today: today
+at: at
+i_comment: Comment
+

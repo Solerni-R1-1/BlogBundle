@@ -43,7 +43,7 @@
             <a class="slrn-author-link" href="{{ path('icap_blog_view_filter', {'blogId': _resource.id, 'filter': author.username}) }}" rel="author" title="{{ author.firstname ~ ' ' ~ author.lastname }}">{{ author.firstname ~ ' ' ~ author.lastname }}</a>
             {% if null != post.publicationDate %}
                 {{ 'on'|trans({}, 'icap_blog' )}}
-                <time>{{ post.publicationDate|date('date_format'|trans({}, 'platform')) }}</time>
+                <time>{{ post.publicationDate|localizeddate( "long", "none", app.request.locale, null, 'd MMMM Y' ) }}</time>
             {% endif %}
         </li>
     </ul>

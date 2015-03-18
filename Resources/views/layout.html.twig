@@ -65,9 +65,9 @@
                 <div class="panel-body">
                     <ul class="list-unstyled list-inline">
                         {% for tag in blog_tags(_resource) %}
-                        <li><a class="pink_link" href="{{ path('icap_blog_view_filter', {'blogId': _resource.id, 'filter': tag.slug}) }}" title="{{ tag }}">{{ tag }}</a></li>
+                            <li><a class="pink_link" href="{{ path('icap_blog_view_filter', {'blogId': _resource.id, 'filter': tag.slug}) }}" title="{{ tag }}">{{ tag }}</a></li>
                         {% else %}
-                        <li>{{ 'no_tags'|trans({}, 'icap_blog') }}</li>
+                            <li>{{ 'no_tags'|trans({}, 'icap_blog') }}</li>
                         {% endfor %}
                     </ul>
                 </div>
