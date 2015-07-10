@@ -97,7 +97,7 @@
                     {{ form_widget(form.message) }}
                     {{ form_rest(form) }}
                     <div class="form-actions slrn-form-actions">
-                        <button type="submit" class="btn btn-primary pull-right">{{ 'i_comment'|trans }}</button>
+                        <a class="btn btn-primary pull-right">{{ 'i_comment'|trans }}</a>
                     </div>
                 </form>
             {% endif %}
@@ -108,5 +108,14 @@
 {% block javascripts %}
 {{ parent() }}
 {% render controller('ClarolineCoreBundle:ResourceType:initPicker') %}
-{{ tinymce_init() }}
+<script>
+    // Checking comment before sending it
+    (function () {
+        $('.slrn-form-actions').on('click', '.btn-primary ', function() {
+            if ( $('textarea.claroline-tiny-mce').val() ) {
+                $('.slrn-comment-form').submit();
+            }
+        });
+    })();
+</script>
 {% endblock %}
