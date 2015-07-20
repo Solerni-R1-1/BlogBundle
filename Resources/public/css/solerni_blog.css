@@ -3,7 +3,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : 11 sept. 2014, 16:56:18
     Author     : root
 */
@@ -14,10 +14,10 @@ and open the template in the editor.
 }
 
 .slrn-blog-aside .panel-heading {
-    
+
     padding:            .66em;
     border-radius:      0;
-    
+
     background-color:   #4B667C;
     color:              #EEEEEF;
 }
@@ -42,7 +42,7 @@ and open the template in the editor.
 .slrn-rss-icon {
     display:        inline-block;
     height:         34px;
-    line-height:    34px; 
+    line-height:    34px;
 }
 
 .slrn-rss-icon:before {
@@ -52,7 +52,7 @@ and open the template in the editor.
     width:          34px;
     height:         34px;
     background:     transparent url('../../clarolinecore/images/sprites_solerni.png') no-repeat -211px -264px scroll;
-    
+
 }
 
 /* CALENDAR */
@@ -82,7 +82,7 @@ and open the template in the editor.
     color: #4B667C;
 }
 
-.slrn-blog-aside .fc-grid th, 
+.slrn-blog-aside .fc-grid th,
 .slrn-blog-aside .fc-grid td {
     border:     0;
     text-align: center;
@@ -268,6 +268,7 @@ li.slrn-list-with-border .panel-footer {
 
 .slrn-comment-form {
     padding-top: 4em;
+    padding-left: 0;
 }
 
 .slrn-comment-form  .slrn-form-actions {
