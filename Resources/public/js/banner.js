@@ -127,9 +127,9 @@
 
     function updateBannerBackgroundImage()
     {
-        var repeatString     = bannerBackgroundImageRepeatField.val();
+        if (bannerBackgroundImagePositionField && bannerBackgroundImagePositionField.val()) {
 
-        if (bannerBackgroundImagePositionField) {
+            var repeatString     = bannerBackgroundImageRepeatField.val();
             var selectedPosition = bannerBackgroundImagePositionField.val().split(" ");
 
             banner.css('background-repeat', repeatString);
