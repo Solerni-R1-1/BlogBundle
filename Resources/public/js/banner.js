@@ -9,7 +9,7 @@
     var removeBannerBackgroundImageButton    = $("#remove_banner_background_image");
     var bannerBackgroundImageField           = $("#icap_blog_banner_form_banner_background_image");
     var bannerBackgroundImageParametersBlock = $("#banner_background_image_parameters");
-    var bannerBackgroundImagePositionField   = $("#icap_blog_banner_form_banner_background_image_position").hide();
+        var bannerBackgroundImagePositionField   = $("#icap_blog_banner_form_banner_background_image_position").hide();
     var bannerBackgroundImagePositionBlock   = $(".position_table", bannerBackgroundImageParametersBlock);
     var bannerBackgroundImageRepeatBlock     = $("#icap_blog_banner_form_banner_background_image_repeat_choices", bannerBackgroundImageParametersBlock);
     var bannerBackgroundImageRepeatField     = $("#icap_blog_banner_form_banner_background_image_repeat", bannerBackgroundImageParametersBlock).hide();
@@ -128,25 +128,28 @@
     function updateBannerBackgroundImage()
     {
         var repeatString     = bannerBackgroundImageRepeatField.val();
-        var selectedPosition = bannerBackgroundImagePositionField.val().split(" ");
 
-        banner.css('background-repeat', repeatString);
-        banner.css('background-position', bannerBackgroundImagePositionField.val());
+        if (bannerBackgroundImagePositionField) {
+            var selectedPosition = bannerBackgroundImagePositionField.val().split(" ");
 
-        $(".orientation_btn.selected", bannerBackgroundImagePositionBlock).removeClass('selected');
-        switch(repeatString) {
-            case 'no-repeat':
-                $(".orientation_btn[data-value='" + bannerBackgroundImagePositionField.val() + "']", bannerBackgroundImagePositionBlock).addClass('selected');
-                break;
-            case 'repeat':
-                $(".orientation_btn", bannerBackgroundImagePositionBlock).addClass('selected');
-                break;
-            case 'repeat-x':
-                $(".orientation_btn.x" + selectedPosition[1], bannerBackgroundImagePositionBlock).addClass('selected');
-                break;
-            case 'repeat-y':
-                $(".orientation_btn.y" + selectedPosition[0], bannerBackgroundImagePositionBlock).addClass('selected');
-                break;
+            banner.css('background-repeat', repeatString);
+            banner.css('background-position', bannerBackgroundImagePositionField.val());
+
+            $(".orientation_btn.selected", bannerBackgroundImagePositionBlock).removeClass('selected');
+            switch (repeatString) {
+                case 'no-repeat':
+                    $(".orientation_btn[data-value='" + bannerBackgroundImagePositionField.val() + "']", bannerBackgroundImagePositionBlock).addClass('selected');
+                    break;
+                case 'repeat':
+                    $(".orientation_btn", bannerBackgroundImagePositionBlock).addClass('selected');
+                    break;
+                case 'repeat-x':
+                    $(".orientation_btn.x" + selectedPosition[1], bannerBackgroundImagePositionBlock).addClass('selected');
+                    break;
+                case 'repeat-y':
+                    $(".orientation_btn.y" + selectedPosition[0], bannerBackgroundImagePositionBlock).addClass('selected');
+                    break;
+            }
         }
     }
 
