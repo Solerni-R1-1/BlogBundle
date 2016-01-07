@@ -320,7 +320,7 @@ class BlogController extends Controller
             $items[] = array(
                 'title'  => $post->getTitle(),
                 'url'    => $this->generateUrl('icap_blog_post_view', array('blogId' => $blog->getId(), 'postSlug' => $post->getSlug())),
-                'date'   => $post->getPublicationDate()->format("m/d/Y h:i:s"),
+                'date'   => $post->getPublicationDate()->format("m/d/Y H:i:s"),
                 'intro'  => $post->getContent(),
                 'author' => $post->getAuthor()->getFirstName() - $post->getAuthor()->getLastName()
             );
