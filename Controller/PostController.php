@@ -14,9 +14,29 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
+use JMS\DiExtraBundle\Annotation as DI;
+use Claroline\CoreBundle\Manager\MailManager;
 
+/**
+ * @DI\Tag("security.secure_service")
+ */
 class PostController extends Controller
 {
+
+    private $mailManager;
+
+    /**
+     * @DI\InjectParams({
+     *     "mailManager"    = @DI\Inject("claroline.manager.mail_manager")
+     * })
+     */
+    public function __construct(
+        MailManager $mailManager
+    ) {
+        $this->mailManager = $mailManager;
+    }
+
+
     /**
      * @Route("/{blogId}/post/view/{postSlug}", name="icap_blog_post_view", requirements={"id" = "\d+"})
      *
@@ -155,6 +175,7 @@ class PostController extends Controller
         if ("POST" === $request->getMethod()) {
             $form->handleRequest($request);
             if ($form->isValid()) {
+
                 $flashBag = $this->get('session')->getFlashBag();
                 $entityManager = $this->getDoctrine()->getManager();
 
@@ -172,6 +193,17 @@ class PostController extends Controller
 
                     if('create' === $action) {
                         $this->dispatchPostCreateEvent($blog, $post);
+
+                        //*//*/*/**/ AJOUTER ARTICLE
+
+                        $users = $this->get('security.context')->getToken()->getUser();
+                        $em = $this->getDoctrine()->getManager();
+                        $moocSession = $em->getRepository('ClarolineCoreBundle:Mooc\\MoocSession')->getMoocSessionByForum($this->get('claroline.manager.forum_manager'));
+                        $titleDispositif =  $post->getTitle();
+                        $lien = $this->generateUrl('icap_blog_view', array('blogId' => $blog->getId()));
+
+                        $this->mailManager->sendNotificationMessage(users, "article", $moocSession  ,null, $titleDispositif, $lien);
+
                     }
                     elseif('update' === $action) {
                         $this->dispatchPostUpdateEvent($post, $changeSet);
