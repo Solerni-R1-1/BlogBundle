@@ -197,7 +197,7 @@ class PostController extends Controller
                         //AJOUTER ARTICLE
                         $em = $this->getDoctrine()->getManager();
                         $moocSession = $em->getRepository('ClarolineCoreBundle:Mooc\\MoocSession')->guessMoocSession( $blog->getResourceNode()->getWorkspace() , $user );
-                        $lien = $this->generateUrl('icap_blog_view', array('blogId' => $blog->getId()));
+                        $lien = $this->generateUrl('icap_blog_view', array('blogId' => $blog->getId()), true);
 
                         $this->mailManager->sendNotificationMessage(null, "article", $moocSession , null, $post->getTitle(), $lien);
 
