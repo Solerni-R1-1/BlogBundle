@@ -194,15 +194,12 @@ class PostController extends Controller
                     if('create' === $action) {
                         $this->dispatchPostCreateEvent($blog, $post);
 
-                        //*//*/*/**/ AJOUTER ARTICLE
-
-                        $users = $this->get('security.context')->getToken()->getUser();
+                        //AJOUTER ARTICLE
                         $em = $this->getDoctrine()->getManager();
-                        $moocSession = $em->getRepository('ClarolineCoreBundle:Mooc\\MoocSession')->getMoocSessionByForum($this->get('claroline.manager.forum_manager'));
-                        $titleDispositif =  $post->getTitle();
+                        $moocSession = $em->getRepository('ClarolineCoreBundle:Mooc\\MoocSession')->guessMoocSession( $blog->getResourceNode()->getWorkspace() , $user );
                         $lien = $this->generateUrl('icap_blog_view', array('blogId' => $blog->getId()));
 
-                        $this->mailManager->sendNotificationMessage(users, "article", $moocSession  ,null, $titleDispositif, $lien);
+                        $this->mailManager->sendNotificationMessage(null, "article", $moocSession , null, $post->getTitle(), $lien);
 
                     }
                     elseif('update' === $action) {
