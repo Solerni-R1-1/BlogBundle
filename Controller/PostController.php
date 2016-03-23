@@ -194,12 +194,15 @@ class PostController extends Controller
                     if('create' === $action) {
                         $this->dispatchPostCreateEvent($blog, $post);
 
-                        //AJOUTER ARTICLE
-                        $em = $this->getDoctrine()->getManager();
-                        $moocSession = $em->getRepository('ClarolineCoreBundle:Mooc\\MoocSession')->guessMoocSession( $blog->getResourceNode()->getWorkspace() , $user );
-                        $lien =  $this ->get('router')->generate('icap_blog_view', array('blogId' => $blog->getId()), true);
+                        if ($post-> getStatus()){
+                            //AJOUTER ARTICLE
+                            $em = $this->getDoctrine()->getManager();
+                            $moocSession = $em->getRepository('ClarolineCoreBundle:Mooc\\MoocSession')->guessMoocSession( $blog->getResourceNode()->getWorkspace() , $user );
+                            $lien = $this ->get('router')->generate('icap_blog_post_view', array('blogId' => $blog->getId(), 'postSlug' => $post->getSlug()), true);
 
-                        $this->mailManager->sendNotificationMessage(null, "article", $moocSession , null, $post->getTitle(), $lien);
+                            $this->mailManager->sendNotificationMessage(null, "article", $moocSession , null, $post->getTitle(), $lien);
+
+                        }
 
                     }
                     elseif('update' === $action) {
@@ -319,6 +322,19 @@ class PostController extends Controller
             $entityManager->flush();
 
             $flashBag->add('success', $messages['success']);
+
+            if ($post-> getStatus()){
+                //AJOUTER ARTICLE
+                $em = $this->getDoctrine()->getManager();
+                $user = $this->get('security.context')->getToken()->getUser();
+                $moocSession = $em->getRepository('ClarolineCoreBundle:Mooc\\MoocSession')->guessMoocSession( $blog->getResourceNode()->getWorkspace() , $user );
+
+                $lien = $this ->get('router')->generate('icap_blog_post_view', array('blogId' => $blog->getId(), 'postSlug' => $post->getSlug()), true);
+
+                $this->mailManager->sendNotificationMessage(null, "article", $moocSession , null, $post->getTitle(), $lien);
+
+            }
+
         } catch (\Exception $exception) {
             $flashBag->add('error', $messages['error']);
         }
