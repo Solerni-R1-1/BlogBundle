@@ -191,6 +191,10 @@ and open the template in the editor.
     margin: 15px 0;
 }
 
+.slrn-blog-post-content a {
+    color: #ff004f;
+}
+
 .slrn-blog-post-footer {
     background:     transparent;
     border:         0;
@@ -240,6 +244,10 @@ li.slrn-list-with-border .panel-footer .list-inline > li {
 
 li.slrn-list-with-border .panel-footer {
     margin-top: 10px;
+}
+
+li.slrn-list-with-border .panel-body a {
+    color: #ff004f;
 }
 
 .slrn-grey-block {
